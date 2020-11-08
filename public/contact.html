@@ -69,43 +69,62 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class = "text-danger">Contact</h1>
+          <h1 class="text-danger">Contact</h1>
         </div>
       </div>
       <div class="row">
         <div class="col">
 
-          <!-- Contact Form. Currently disabled until form submission is better understood-->
-          <form>
-              <div class="form-group text-dark">
-                <label for="exampleFormControlInput1">Name</label>
-                <input type="text" id="exampleFormControlInput1" class="form-control" placeholder="Name">
-              </div>
+          <!-- Contact Form using Google Script: https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server#how -->
 
-              <div class="form-group text-dark">
-                <label for="exampleFormControlInput2">Email</label>
-                <input type="email" id="exampleFormControlInput2" class="form-control" placeholder="Email">
-              </div>
+          <form class="gform pure-form pure-form-stacked" method="POST" data-email="aguerra1508@gmail.com"
+						action="https://script.google.com/macros/s/AKfycbwLd0CsFwZNim32b2C3cIOS-AsF8SQGrqv4nK3Y/exec">
+						
+						<div class="form-elements">
+							<fieldset class="form-elements form-group text-dark">
+								<label for="name">Name: </label>
+								<input id="name" name="name" placeholder="Name" />
+					</fieldset>
+						
 
-              <div class="form-group text-dark">
-                <label for="exampleFormControlTextarea1">Message</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
+						<fieldset class="form-elements form-group text-dark">
+							<label for="email">Email Address:</label>
+							<input id="email" name="email" type="email" value="" required placeholder="example@email.com" />
+						</fieldset>
 
-              <a class="btn btn-danger" href="mailto:aguerra1508@gmail.com" role="button">Submit</a>
+						<fieldset class="form-elements form-group text-dark">
+							<label for="message">Message: </label>
+							<textarea id="message" name="message" rows="3" placeholder="Message"></textarea>
+						</fieldset>
+
+						<fieldset class="pure-group honeypot-field">
+							<input id="honeypot" type="hidden" name="honeypot" value="" />
+						</fieldset>
+
+						<button class="button-success pure-button button-xlarge">
+							<i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+
+						</div>
+            
+            <!-- Customize the Thankyou Message People See when they submit the form: -->
+            <div class="thankyou_message" style="display:none;">
+              <h2>Thanks for contacting me!
+                I will get back to you soon!</h2>
+						</div>
+						
+
           </form>
-        </div>
-      </div>
-    </div>
-  </section>
+				</div>
+			</div>
+          <!-- Submit the Form to Google Using "AJAX" -->
+          <script data-cfasync="false" type="text/javascript" src="./js/form-submission-handler.js"></script>
 
-  <!--Bootstrap sticky footer w/ semantic element-->
-  <footer class="footer mt-auto py-3">
-    <div class="container">
-      <span class="text-dark"> &#169; Copyright 2020 Analee Guerra</span>
-    </div>
-  </footer>
-
+          <!--Bootstrap sticky footer w/ semantic element-->
+          <footer class="footer mt-auto py-3">
+            <div class="container">
+              <span class="text-dark"> &#169; Copyright 2020 Analee Guerra</span>
+            </div>
+          </footer>
 </body>
 
 </html>
